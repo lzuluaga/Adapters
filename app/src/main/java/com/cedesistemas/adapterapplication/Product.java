@@ -1,8 +1,18 @@
 package com.cedesistemas.adapterapplication;
 
+import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
+
 public class Product {
 
+
+    @SerializedName("name")
+    @Expose
     private String productName;
+
+
+    @SerializedName("description")
+    @Expose
     private String productDescription;
 
     public String getProductName() {
