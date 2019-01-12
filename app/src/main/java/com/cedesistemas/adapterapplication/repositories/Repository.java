@@ -1,4 +1,8 @@
-package com.cedesistemas.adapterapplication;
+package com.cedesistemas.adapterapplication.repositories;
+
+import com.cedesistemas.adapterapplication.models.Product;
+import com.cedesistemas.adapterapplication.services.ServicesFactory;
+import com.cedesistemas.adapterapplication.services.IServices;
 
 import java.io.IOException;
 import java.util.ArrayList;

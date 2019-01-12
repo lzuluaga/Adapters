@@ -1,4 +1,4 @@
-package com.cedesistemas.adapterapplication;
+package com.cedesistemas.adapterapplication.fragments;
 
 
 import android.os.Bundle;
@@ -9,6 +9,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
+
+import com.cedesistemas.adapterapplication.models.Product;
+import com.cedesistemas.adapterapplication.R;
+import com.cedesistemas.adapterapplication.repositories.Repository;
+import com.cedesistemas.adapterapplication.adapters.AdapterProducts;
 
 import java.io.IOException;
 import java.util.ArrayList;

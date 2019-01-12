@@ -1,9 +1,13 @@
-package com.cedesistemas.adapterapplication;
+package com.cedesistemas.adapterapplication.activities;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+
+import com.cedesistemas.adapterapplication.models.Product;
+import com.cedesistemas.adapterapplication.R;
+import com.cedesistemas.adapterapplication.adapters.AdapterProducts;
 
 import java.util.ArrayList;
 

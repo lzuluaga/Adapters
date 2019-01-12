@@ -1,4 +1,4 @@
-package com.cedesistemas.adapterapplication;
+package com.cedesistemas.adapterapplication.services;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -9,6 +9,7 @@ import okhttp3.OkHttpClient;
 import retrofit2.Converter;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
+
 
 public class ServicesFactory {
 
@@ -26,7 +27,6 @@ public class ServicesFactory {
                 .addConverterFactory(getGsonConverter())
                 .build();
     }
-
 
     private Converter.Factory getGsonConverter(){
         Gson gson =  new GsonBuilder().setDateFormat("yyyy-MM-dd").create();

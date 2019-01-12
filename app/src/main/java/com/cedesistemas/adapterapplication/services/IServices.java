@@ -1,4 +1,6 @@
-package com.cedesistemas.adapterapplication;
+package com.cedesistemas.adapterapplication.services;
+
+import com.cedesistemas.adapterapplication.models.Product;
 
 import java.util.ArrayList;
 

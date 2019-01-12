@@ -1,4 +1,4 @@
-package com.cedesistemas.adapterapplication;
+package com.cedesistemas.adapterapplication.activities;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -8,6 +8,10 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.TextView;
+
+import com.cedesistemas.adapterapplication.fragments.OneFragment;
+import com.cedesistemas.adapterapplication.R;
+import com.cedesistemas.adapterapplication.fragments.TwoFragment;
 
 public class Main2Activity extends AppCompatActivity {
 
