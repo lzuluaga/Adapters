@@ -81,6 +81,10 @@ public class OneFragment extends Fragment {
         });
     }
 
+    public void goToCreateProduct(View view){
+
+    }
+
 
 
 }
