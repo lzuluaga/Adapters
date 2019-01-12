@@ -1,6 +1,8 @@
 package com.cedesistemas.adapterapplication.fragments;
 
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -13,6 +15,7 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import com.cedesistemas.adapterapplication.activities.CreateProductActivity;
+import com.cedesistemas.adapterapplication.helper.ValidateInternet;
 import com.cedesistemas.adapterapplication.models.Product;
 import com.cedesistemas.adapterapplication.R;
 import com.cedesistemas.adapterapplication.repositories.Repository;
@@ -44,13 +47,9 @@ public class OneFragment extends Fragment {
         recyclerView = view.findViewById(R.id.recyclerView);
         buttonCreateProduct = view.findViewById(R.id.buttonCreateProduct);
         repository = new Repository();
-        Thread thread = new Thread(new Runnable() {
-            @Override
-            public void run() {
-                getProducts();
-            }
-        });
-        thread.start();
+        validateInternet();
+
+
         buttonCreateProduct.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -59,6 +58,26 @@ public class OneFragment extends Fragment {
             }
         });
         return view;
+    }
+
+    private void validateInternet(){
+        final ValidateInternet validateInternet = new ValidateInternet(getContext());
+        if (validateInternet.isConnected()){
+            createThreadGetProduct();
+        }else{
+            AlertDialog.Builder alertDialog = new AlertDialog.Builder(getContext());
+            alertDialog.setTitle(R.string.title_validate_internet);
+            alertDialog.setMessage(R.string.message_validate_internet);
+            alertDialog.setCancelable(false);
+            alertDialog.setPositiveButton(R.string.text_again, new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialogInterface, int i) {
+                    validateInternet();
+                    dialogInterface.dismiss();
+                }
+            });
+            alertDialog.show();
+        }
     }
 
     private void getProducts() {
@@ -88,4 +107,20 @@ public class OneFragment extends Fragment {
         });
     }
 
+    private void createThreadGetProduct(){
+        Thread thread = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                getProducts();
+            }
+        });
+        thread.start();
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        validateInternet();
+
+    }
 }

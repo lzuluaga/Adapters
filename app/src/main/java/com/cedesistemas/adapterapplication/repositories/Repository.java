@@ -39,4 +39,17 @@ public class Repository {
     }
 
 
+    public Product saveProducts(Product product) throws IOException {
+        try {
+            Call<Product> call = iServices.saveProduct(product);
+            Response<Product> response = call.execute();
+            if (response.errorBody() != null){
+                throw defaultError();
+            }else{
+                return response.body();
+            }
+        }catch (IOException e){
+            throw defaultError();
+        }
+    }
 }

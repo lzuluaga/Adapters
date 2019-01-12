@@ -12,4 +12,7 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="create_button">Crear producto</string>
+    <string name="title_validate_internet">Error</string>
+    <string name="message_validate_internet">Verificar conexión a internet</string>
+    <string name="text_again">Intentar de nuevo</string>
 </resources>
