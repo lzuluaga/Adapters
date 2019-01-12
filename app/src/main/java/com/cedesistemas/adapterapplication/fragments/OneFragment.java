@@ -25,7 +25,7 @@ import java.util.ArrayList;
 public class OneFragment extends Fragment {
 
     private RecyclerView recyclerView;
-    private RecyclerView recyclerView2;
+
 
     private AdapterProducts adapterProducts;
     private Repository repository;
@@ -43,7 +43,6 @@ public class OneFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_one, container, false);
         recyclerView = view.findViewById(R.id.recyclerView);
-        recyclerView2 = view.findViewById(R.id.recyclerViewa);
         repository = new Repository();
         Thread thread = new Thread(new Runnable() {
             @Override
