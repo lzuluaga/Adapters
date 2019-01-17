@@ -68,7 +68,7 @@
     <ProgressBar
         android:layout_width="wrap_content"
         android:layout_gravity="center"
-        android:visibility="visible"
+        android:visibility="invisible"
         android:layout_marginTop="40dp"
         android:layout_height="wrap_content" />
 
@@ -78,7 +78,7 @@
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
         android:layout_marginTop="40dp"
-        android:visibility="invisible"
+        android:visibility="visible"
         android:enabled="false"
         android:background="@color/colorGray"
         android:text="@string/create_button"

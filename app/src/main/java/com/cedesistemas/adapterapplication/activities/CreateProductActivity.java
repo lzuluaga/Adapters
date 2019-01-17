@@ -1,5 +1,7 @@
 package com.cedesistemas.adapterapplication.activities;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
@@ -11,6 +13,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.cedesistemas.adapterapplication.R;
+import com.cedesistemas.adapterapplication.helper.ValidateInternet;
 import com.cedesistemas.adapterapplication.models.Product;
 import com.cedesistemas.adapterapplication.repositories.Repository;
 
@@ -24,11 +27,13 @@ public class CreateProductActivity extends AppCompatActivity implements TextWatc
     private EditText product_etQuantity;
     private EditText product_etBrand;
     private Button product_btnCreate;
+    private ValidateInternet validateInternet;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.create_product);
+        validateInternet = new ValidateInternet(this);
         loadView();
         loadEvents();
     }
@@ -58,12 +63,27 @@ public class CreateProductActivity extends AppCompatActivity implements TextWatc
                 product.setPrice(Integer.parseInt(product_etPrice.getText().toString()));
                 product.setQuantity(Integer.parseInt(product_etQuantity.getText().toString()));
 
-                createThreadCreateProduct(product);
+                if (validateInternet.isConnected()) {
+                    createThreadCreateProduct(product);
+                } else {
+                    AlertDialog.Builder alertDialog = new AlertDialog.Builder(CreateProductActivity.this);
+                    alertDialog.setTitle(R.string.title_validate_internet);
+                    alertDialog.setMessage(R.string.message_validate_internet);
+                    alertDialog.setCancelable(true);
+                    alertDialog.setPositiveButton(R.string.accept, new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            dialogInterface.dismiss();
+                        }
+                    });
+                    alertDialog.show();
+                }
+
             }
         });
     }
 
-    private void createThreadCreateProduct(final Product product){
+    private void createThreadCreateProduct(final Product product) {
         Thread thread = new Thread(new Runnable() {
             @Override
             public void run() {

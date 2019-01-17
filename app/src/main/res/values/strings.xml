@@ -15,4 +15,5 @@
     <string name="title_validate_internet">Error</string>
     <string name="message_validate_internet">Verificar conexión a internet</string>
     <string name="text_again">Intentar de nuevo</string>
+    <string name="accept">Aceptar</string>
 </resources>
